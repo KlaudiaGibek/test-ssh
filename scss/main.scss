@@ -1,0 +1,174 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #333;
+}
+
+.box {
+	padding: 80px 150px;
+	border-radius: 15px;
+	background-color: rgba(0, 0, 0, 0.447);
+	box-shadow: 0px 0px 10px blue;
+}
+.link {
+	position: relative;
+	padding: 10px 20px;
+	color: blue;
+	font-size: 30px;
+	text-decoration: none;
+}
+
+.link,
+.link::after,
+.link::before {
+	transition: 0.4s;
+	// nie dodajac wlasciwosci animujemy wszystko ale to na potrzeby wszystkich linkow w tym przypadku
+}
+
+.one::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 3px;
+	width: 100%;
+	background-color: #fff;
+	transition: transform 0.4s;
+	transform: scaleX(0);
+	transform-origin: right;
+}
+.one:hover::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+.two::before,
+.two::after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+.two::before {
+	top: -2px;
+	left: -8px;
+	border-top: 3px solid white;
+	border-left: 3px solid white;
+}
+.two::after {
+	bottom: -2px;
+	right: -8px;
+	border-bottom: 3px solid white;
+	border-right: 3px solid white;
+}
+.two:hover::before,
+.two:hover::after {
+	width: 50px;
+	height: 50%;
+	opacity: 1;
+}
+
+.three::before,
+.three::after {
+	content: '';
+	position: absolute;
+	width: 0;
+	bottom: 0;
+	border-bottom: 2px dotted white;
+}
+.three::before {
+	right: 50%;
+}
+.three::after {
+	left: 50%;
+}
+.three:hover::before,
+.three:hover::after {
+	width: 50%;
+}
+
+.four::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgb(255, 250, 192);
+	z-index: -1;
+}
+.four:hover::after {
+	height: 100%;
+}
+.four:hover {
+	color: black;
+	font-weight: bold;
+}
+// ......................................
+.five {
+	z-index: 0;
+}
+.five:hover {
+	animation: blink 0.5s forwards;
+}
+
+.five::before,
+.five::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	background-color: aliceblue;
+	z-index: -1;
+}
+.five::before {
+	left: 0;
+}
+.five::after {
+	right: 0;
+}
+
+.five:hover::before,
+.five:hover::after {
+	animation: background 0.6s 0.5s forwards;
+}
+@keyframes background {
+	from {
+		width: 0;
+	}
+	to {
+		width: 50%;
+	}
+}
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 1;
+	}
+	60% {
+		opacity: 0;
+	}
+	80% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
